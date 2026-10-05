@@ -10,8 +10,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const setMobile = (open) => {
+    if (!open && mobileNav && mobileNav.contains(document.activeElement)) {
+      document.activeElement.blur();
+      menuButton?.focus();
+    }
     mobileNav?.classList.toggle("open", open);
-    mobileNav?.setAttribute("aria-hidden", String(!open));
+    if (open) {
+      mobileNav?.removeAttribute("aria-hidden");
+      mobileNav?.removeAttribute("inert");
+    } else {
+      mobileNav?.setAttribute("aria-hidden", "true");
+      mobileNav?.setAttribute("inert", "");
+    }
     menuButton?.setAttribute("aria-expanded", String(open));
     body.style.overflow = open ? "hidden" : "";
   };
