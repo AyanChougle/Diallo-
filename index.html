@@ -36,7 +36,57 @@
       <div class="nav-links">
         <a href="#home" data-scroll="home">Home</a>
         <a href="#about" data-scroll="about">About</a>
-        <a href="#services" data-scroll="services">Services</a>
+        <div class="nav-item-dropdown">
+          <a href="#services" data-scroll="services" class="dropdown-link">Services <span class="caret">▾</span></a>
+          <div class="dropdown-menu">
+            <div class="dropdown-column">
+              <span class="dropdown-title">CORE OPERATIONS</span>
+              <a href="service-detail.html?service=customer-service" class="dropdown-item">
+                <strong>Customer Service & Support</strong>
+                <small>Inbound, outbound, query resolution & CX</small>
+              </a>
+              <a href="service-detail.html?service=collections" class="dropdown-item">
+                <strong>Collections & Field Operations</strong>
+                <small>Telecalling & structured field recovery</small>
+              </a>
+              <a href="service-detail.html?service=verification" class="dropdown-item">
+                <strong>Verification Services</strong>
+                <small>Identity, address & background checks</small>
+              </a>
+              <a href="service-detail.html?service=documentation" class="dropdown-item">
+                <strong>Documentation & NACH</strong>
+                <small>Document audit & NACH mandate processing</small>
+              </a>
+              <a href="service-detail.html?service=sales" class="dropdown-item">
+                <strong>Sales & Lead Generation</strong>
+                <small>Outbound campaigns & revenue growth</small>
+              </a>
+              <a href="service-detail.html?service=technology" class="dropdown-item">
+                <strong>Technology & Analytics</strong>
+                <small>Automated workflows & operational insights</small>
+              </a>
+            </div>
+            <div class="dropdown-column">
+              <span class="dropdown-title">INDUSTRY SOLUTIONS</span>
+              <a href="service-detail.html?service=ecommerce" class="dropdown-item">
+                <strong>E-Commerce Operations</strong>
+                <small>Order management, refunds & 24/7 support</small>
+              </a>
+              <a href="service-detail.html?service=edtech" class="dropdown-item">
+                <strong>EdTech Operations</strong>
+                <small>Learner onboarding & enrollment helpdesk</small>
+              </a>
+              <a href="service-detail.html?service=healthcare" class="dropdown-item">
+                <strong>Healthcare Operations</strong>
+                <small>Patient coordination & claim follow-ups</small>
+              </a>
+              <a href="service-detail.html?service=marketing-sales" class="dropdown-item">
+                <strong>Marketing & Sales</strong>
+                <small>Omnichannel lead conversion strategies</small>
+              </a>
+            </div>
+          </div>
+        </div>
         <a href="#industries" data-scroll="industries">Industries</a>
         <a href="#clients" data-scroll="clients">Clients</a>
         <a href="#faq" data-scroll="faq">FAQ</a>
@@ -205,32 +255,32 @@
         </div>
 
         <div class="service-grid">
-          <a class="service-card reveal" href="#contact">
+          <a class="service-card reveal" href="service-detail.html?service=customer-service">
             <span class="card-number">01</span><span class="card-arrow">↗</span>
             <h3>Customer<br>Service & Support</h3>
             <p>Inbound and outbound support, query management and customer engagement.</p>
           </a>
-          <a class="service-card reveal" href="#contact">
+          <a class="service-card reveal" href="service-detail.html?service=collections">
             <span class="card-number">02</span><span class="card-arrow">↗</span>
             <h3>Collections<br>& Field Operations</h3>
             <p>Telecalling, field collection operations, structured outreach and follow-up.</p>
           </a>
-          <a class="service-card reveal" href="#contact">
+          <a class="service-card reveal" href="service-detail.html?service=verification">
             <span class="card-number">03</span><span class="card-arrow">↗</span>
             <h3>Verification<br>Services</h3>
             <p>Tele and field verification for identity, address and background checks.</p>
           </a>
-          <a class="service-card reveal" href="#contact">
+          <a class="service-card reveal" href="service-detail.html?service=documentation">
             <span class="card-number">04</span><span class="card-arrow">↗</span>
             <h3>Documentation<br>& NACH</h3>
             <p>Documentation, verification and NACH processing support.</p>
           </a>
-          <a class="service-card reveal" href="#contact">
+          <a class="service-card reveal" href="service-detail.html?service=sales">
             <span class="card-number">05</span><span class="card-arrow">↗</span>
             <h3>Sales & Lead<br>Generation</h3>
             <p>Inbound and outbound campaigns, lead generation and customer engagement.</p>
           </a>
-          <a class="service-card reveal" href="#contact">
+          <a class="service-card reveal" href="service-detail.html?service=technology">
             <span class="card-number">06</span><span class="card-arrow">↗</span>
             <h3>Technology<br>& Analytics</h3>
             <p>Technology-enabled workflows, performance analytics and automation support.</p>
@@ -240,34 +290,34 @@
         <div class="service-secondary reveal">
           <span class="secondary-title">Additional capabilities</span>
           <div class="capability-boxes">
-            <div class="capability-box">
+            <a class="capability-box" href="service-detail.html?service=hr-management">
               <span class="cap-tag">01</span>
               <div class="cap-text">
                 <strong>HR Management System</strong>
                 <small>Enterprise Workforce Platform</small>
               </div>
-            </div>
-            <div class="capability-box">
+            </a>
+            <a class="capability-box" href="service-detail.html?service=payroll">
               <span class="cap-tag">02</span>
               <div class="cap-text">
                 <strong>Third-party Payroll</strong>
                 <small>Compliant Processing & Payouts</small>
               </div>
-            </div>
-            <div class="capability-box">
+            </a>
+            <a class="capability-box" href="service-detail.html?service=backend">
               <span class="cap-tag">03</span>
               <div class="cap-text">
                 <strong>Backend Processes</strong>
                 <small>High-Volume Back-Office</small>
               </div>
-            </div>
-            <div class="capability-box">
+            </a>
+            <a class="capability-box" href="service-detail.html?service=product-agnostic">
               <span class="cap-tag">04</span>
               <div class="cap-text">
                 <strong>Product-agnostic Operations</strong>
                 <small>Custom Workflow Execution</small>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>

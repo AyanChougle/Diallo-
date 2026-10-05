@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description"
+    content="Detailed overview of Diallo services, operational capabilities, business use cases, and delivery frameworks.">
+  <meta name="theme-color" content="#061b2b">
+  <title>Service Details | Diallo Operations</title>
+  <link rel="icon" href="assets/diallo-favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .service-hero {
+      padding: 160px 0 70px;
+      background: var(--navy);
+      color: #fff;
+      position: relative;
+      border-bottom: 1px solid var(--dark-line);
+    }
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+    .breadcrumb a { color: var(--orange); font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .service-detail-title {
+      font-size: clamp(38px, 5.2vw, 68px);
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      margin: 15px 0 20px;
+    }
+    .service-tagline {
+      font-size: 19px;
+      color: #cbd5e1;
+      max-width: 780px;
+      line-height: 1.6;
+    }
+    .detail-container {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 50px;
+      padding: 70px 0 100px;
+    }
+    .detail-body {
+      display: flex;
+      flex-direction: column;
+      gap: 45px;
+    }
+    .detail-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 10px 30px rgba(9, 34, 53, 0.04);
+    }
+    .detail-card h3 {
+      font-size: 24px;
+      letter-spacing: -.02em;
+      margin: 0 0 16px;
+      color: var(--ink);
+    }
+    .detail-card p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+      margin: 0 0 20px;
+    }
+    .feature-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 25px;
+    }
+    .feature-item {
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .feature-item strong {
+      display: block;
+      font-size: 15px;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .feature-item p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+    .usecase-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .usecase-box {
+      border-left: 4px solid var(--orange);
+      background: #f8fafc;
+      padding: 18px 22px;
+      border-radius: 0 14px 14px 0;
+    }
+    .usecase-box strong {
+      display: block;
+      font-size: 16px;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .usecase-box p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+    .sidebar-card {
+      position: sticky;
+      top: 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .service-nav-box {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 20px;
+      padding: 26px;
+    }
+    .service-nav-box h4 {
+      font-size: 12px;
+      letter-spacing: .14em;
+      color: var(--orange);
+      text-transform: uppercase;
+      margin: 0 0 18px;
+    }
+    .service-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .service-link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all .2s;
+    }
+    .service-link-btn:hover, .service-link-btn.active {
+      background: var(--orange);
+      color: #fff;
+    }
+    .sidebar-cta-card {
+      background: linear-gradient(135deg, #0a2639, #061b2b);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 28px;
+      color: #fff;
+    }
+    .sidebar-cta-card h4 {
+      font-size: 20px;
+      margin: 0 0 10px;
+    }
+    .sidebar-cta-card p {
+      color: #94a3b8;
+      font-size: 13px;
+      line-height: 1.6;
+      margin: 0 0 20px;
+    }
+    @media(max-width: 900px) {
+      .detail-container { grid-template-columns: 1fr; }
+      .feature-list { grid-template-columns: 1fr; }
+      .sidebar-card { position: static; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="brand" href="index.html" aria-label="Diallo home">
+        <img src="assets/company-logos/diallo-logo-light.png" alt="Diallo">
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <div class="nav-item-dropdown">
+          <a href="index.html#services" class="dropdown-link active">Services <span class="caret">▾</span></a>
+          <div class="dropdown-menu">
+            <div class="dropdown-column">
+              <span class="dropdown-title">CORE OPERATIONS</span>
+              <a href="service-detail.html?service=customer-service" class="dropdown-item">
+                <strong>Customer Service & Support</strong>
+                <small>Inbound, outbound, query resolution & CX</small>
+              </a>
+              <a href="service-detail.html?service=collections" class="dropdown-item">
+                <strong>Collections & Field Operations</strong>
+                <small>Telecalling & structured field recovery</small>
+              </a>
+              <a href="service-detail.html?service=verification" class="dropdown-item">
+                <strong>Verification Services</strong>
+                <small>Identity, address & background checks</small>
+              </a>
+              <a href="service-detail.html?service=documentation" class="dropdown-item">
+                <strong>Documentation & NACH</strong>
+                <small>Document audit & NACH mandate processing</small>
+              </a>
+              <a href="service-detail.html?service=sales" class="dropdown-item">
+                <strong>Sales & Lead Generation</strong>
+                <small>Outbound campaigns & revenue growth</small>
+              </a>
+              <a href="service-detail.html?service=technology" class="dropdown-item">
+                <strong>Technology & Analytics</strong>
+                <small>Automated workflows & operational insights</small>
+              </a>
+            </div>
+            <div class="dropdown-column">
+              <span class="dropdown-title">INDUSTRY SOLUTIONS</span>
+              <a href="service-detail.html?service=ecommerce" class="dropdown-item">
+                <strong>E-Commerce Operations</strong>
+                <small>Order management, refunds & 24/7 support</small>
+              </a>
+              <a href="service-detail.html?service=edtech" class="dropdown-item">
+                <strong>EdTech Operations</strong>
+                <small>Learner onboarding & enrollment helpdesk</small>
+              </a>
+              <a href="service-detail.html?service=healthcare" class="dropdown-item">
+                <strong>Healthcare Operations</strong>
+                <small>Patient coordination & claim follow-ups</small>
+              </a>
+              <a href="service-detail.html?service=marketing-sales" class="dropdown-item">
+                <strong>Marketing & Sales</strong>
+                <small>Omnichannel lead conversion strategies</small>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="index.html#industries">Industries</a>
+        <a href="index.html#clients">Clients</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+
+      <a class="nav-cta" href="index.html#contact">Start a conversation <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="service-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> <span>/</span> <a href="index.html#services">Services</a> <span>/</span> <span id="breadcrumb-title">Customer Service & Support</span>
+        </div>
+        <div class="eyebrow" id="service-category">OPERATIONAL WORKFLOW</div>
+        <h1 class="service-detail-title" id="service-title">Customer Service & Support</h1>
+        <p class="service-tagline" id="service-tagline">
+          Delivering 24/7 inbound and outbound customer support, omnichannel query resolution, and elevated customer satisfaction.
+        </p>
+      </div>
+    </section>
+
+    <div class="container detail-container">
+      <div class="detail-body">
+        <article class="detail-card">
+          <h3>Overview & Business Impact</h3>
+          <p id="service-overview">
+            Diallo's Customer Service & Support engine combines trained human specialists, automated call routing, and real-time SLA dashboards to resolve customer issues fast. We manage peak-season spikes seamlessly while maintaining strict Quality Assurance and First Contact Resolution (FCR) targets.
+          </p>
+
+          <div class="feature-list" id="feature-list">
+            <div class="feature-item">
+              <strong>24/7 Multilingual Support</strong>
+              <p>Round-the-clock coverage in English, Hindi, and regional languages to ensure seamless customer experience.</p>
+            </div>
+            <div class="feature-item">
+              <strong>Omnichannel Management</strong>
+              <p>Integrated voice calls, email ticketing, live web chat, and WhatsApp support in a unified queue.</p>
+            </div>
+            <div class="feature-item">
+              <strong>SLA & FCR Guarantee</strong>
+              <p>Continuous monitoring guaranteeing over 92% First Contact Resolution and under 30-second response times.</p>
+            </div>
+            <div class="feature-item">
+              <strong>Quality Monitoring & Analytics</strong>
+              <p>Speech analytics, CSAT sentiment scoring, and automated supervisor evaluation for quality excellence.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="detail-card">
+          <h3>Business Use Cases & Applications</h3>
+          <div class="usecase-grid" id="usecase-grid">
+            <div class="usecase-box">
+              <strong>High-Volume Query Handling</strong>
+              <p>Managing order tracking, refund inquiries, account updates, and technical troubleshooting smoothly during peak operational hours.</p>
+            </div>
+            <div class="usecase-box">
+              <strong>Retention & Customer Engagement</strong>
+              <p>Proactive outbound outreach for customer feedback, re-engagement campaigns, and escalation management.</p>
+            </div>
+            <div class="usecase-box">
+              <strong>SaaS & Helpdesk Escalation</strong>
+              <p>Structured Level-1 and Level-2 technical helpdesk support with CRM integration (Zendesk, Salesforce, Freshdesk).</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="detail-card">
+          <h3>Delivery Framework & Execution</h3>
+          <p>We deploy standard operating protocols engineered for precision and fast onboarding:</p>
+          <div class="feature-list">
+            <div class="feature-item">
+              <strong>1. Discovery & SLA Alignment</strong>
+              <p>Mapping existing ticket flows, call scripts, escalation paths, and defining core KPI benchmarks.</p>
+            </div>
+            <div class="feature-item">
+              <strong>2. Agent Training & Onboarding</strong>
+              <p>Rigorous product knowledge training, voice modulation, and simulator scenario evaluations.</p>
+            </div>
+            <div class="feature-item">
+              <strong>3. Go-Live & Parallel Testing</strong>
+              <p>Phased rollout with continuous supervisor auditing to guarantee zero drop-off during transition.</p>
+            </div>
+            <div class="feature-item">
+              <strong>4. Optimization & Reporting</strong>
+              <p>Weekly executive dashboards, actionable root-cause analysis, and continuous workflow optimization.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <aside class="sidebar-card">
+        <div class="service-nav-box">
+          <h4>Explore All Services</h4>
+          <div class="service-links-list">
+            <a href="service-detail.html?service=customer-service" class="service-link-btn" data-s="customer-service">Customer Support <span>↗</span></a>
+            <a href="service-detail.html?service=collections" class="service-link-btn" data-s="collections">Collections & Field <span>↗</span></a>
+            <a href="service-detail.html?service=verification" class="service-link-btn" data-s="verification">Verification Services <span>↗</span></a>
+            <a href="service-detail.html?service=documentation" class="service-link-btn" data-s="documentation">Documentation & NACH <span>↗</span></a>
+            <a href="service-detail.html?service=sales" class="service-link-btn" data-s="sales">Sales & Lead Gen <span>↗</span></a>
+            <a href="service-detail.html?service=technology" class="service-link-btn" data-s="technology">Tech & Analytics <span>↗</span></a>
+            <a href="service-detail.html?service=ecommerce" class="service-link-btn" data-s="ecommerce">E-Commerce Ops <span>↗</span></a>
+            <a href="service-detail.html?service=edtech" class="service-link-btn" data-s="edtech">EdTech Solutions <span>↗</span></a>
+            <a href="service-detail.html?service=healthcare" class="service-link-btn" data-s="healthcare">Healthcare Ops <span>↗</span></a>
+          </div>
+        </div>
+
+        <div class="sidebar-cta-card">
+          <h4>Need this capability for your business?</h4>
+          <p>Talk to our operations specialists to design a customized service workflow tailored to your volume.</p>
+          <a href="index.html#contact" class="btn btn-primary" style="width:100%;">Talk to Diallo <span>↗</span></a>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Diallo Operations. All rights reserved.</div>
+        <div>Customer Engagement · Operations · Technology</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const servicesData = {
+      "customer-service": {
+        category: "CORE OPERATIONS",
+        title: "Customer Service & Support",
+        tagline: "Delivering 24/7 inbound and outbound customer support, query management, and elevated customer satisfaction.",
+        overview: "Diallo's Customer Service & Support engine combines trained human specialists, automated call routing, and real-time SLA dashboards to resolve customer issues fast. We manage peak-season spikes seamlessly while maintaining strict Quality Assurance and First Contact Resolution (FCR) targets.",
+        features: [
+          { title: "24/7 Multilingual Support", desc: "Round-the-clock coverage in English, Hindi, and regional languages for seamless customer experience." },
+          { title: "Omnichannel Management", desc: "Integrated voice calls, email ticketing, live web chat, and WhatsApp support in a unified queue." },
+          { title: "SLA & FCR Guarantee", desc: "Continuous monitoring guaranteeing over 92% First Contact Resolution and under 30-second response times." },
+          { title: "Quality Monitoring & Analytics", desc: "Speech analytics, CSAT sentiment scoring, and automated supervisor evaluation for quality excellence." }
+        ],
+        usecases: [
+          { title: "High-Volume Query Handling", desc: "Managing order tracking, refund inquiries, account updates, and technical troubleshooting smoothly during peak operational hours." },
+          { title: "Retention & Customer Engagement", desc: "Proactive outbound outreach for customer feedback, re-engagement campaigns, and escalation management." },
+          { title: "SaaS & Helpdesk Escalation", desc: "Structured Level-1 and Level-2 technical helpdesk support with CRM integration (Zendesk, Salesforce, Freshdesk)." }
+        ]
+      },
+      "collections": {
+        category: "FINANCIAL RECOVERY",
+        title: "Collections & Field Operations",
+        tagline: "Structured telecalling and field collection recovery operations engineered for high resolution and compliance.",
+        overview: "Our Collections & Field Operations unit provides end-to-end debt recovery solutions for banks, NBFCs, and fintech platforms. We combine soft tele-reminders, automated payment link generation, and trained ground agents adhering strictly to RBI compliance guidelines.",
+        features: [
+          { title: "Compliant Telecalling", desc: "Early-stage bucket 1-3 telecalling with polite, persuasive script execution following regulatory norms." },
+          { title: "Field Recovery Agents", desc: "On-ground verification and doorstep pickup agents equipped with real-time GPS tracking mobile apps." },
+          { title: "Digital Payment Links", desc: "Instant SMS/WhatsApp digital payment link dispatch enabling immediate customer clearing." },
+          { title: "Audit Trail & Recording", desc: "100% voice call recording and geo-tagged field visit verification for total transparency." }
+        ],
+        usecases: [
+          { title: "NBFC & Bank Loan Recovery", desc: "Managing personal loan, credit card, and consumer durable loan collection buckets systematically." },
+          { title: "BNPL & Fintech Portfolio Recovery", desc: "Automated digital payment outreach combined with tele-calling for short-term micro-credit loans." },
+          { title: "Skiptracing & Address Re-Verification", desc: "Locating non-responsive borrowers using structured field intelligence and verified contact updates." }
+        ]
+      },
+      "verification": {
+        category: "RISK MANAGEMENT",
+        title: "Verification Services",
+        tagline: "Rigorous physical and digital verification for identity, address, document validation, and risk mitigation.",
+        overview: "Diallo's Verification Services shield enterprises from fraud through thorough tele-verification, physical door-step checks, document validation, and employment history audits.",
+        features: [
+          { title: "Doorstep Physical Verification", desc: "Geo-tagged, time-stamped physical visits with photo evidence for address and identity verification." },
+          { title: "Tele-KYC & Video Verification", desc: "Agent-assisted digital video KYC calls for swift remote verification and document checks." },
+          { title: "Merchant & Vendor Audits", desc: "Verifying business premises, physical inventory, and registration details for merchant onboarding." },
+          { title: "Background Checks", desc: "Employment history, education background, and reference checks for enterprise hiring." }
+        ],
+        usecases: [
+          { title: "Credit & Loan Applicant KYC", desc: "Verifying residential and business addresses of loan applicants prior to disbursement." },
+          { title: "Gig-Worker & Staff Onboarding", desc: "Rapid verification for delivery personnel, field agents, and customer service staff." },
+          { title: "Merchant Onboarding for Payments", desc: "Validating physical shopfronts and business operations for payment gateway integration." }
+        ]
+      },
+      "documentation": {
+        category: "BACK-OFFICE PROCESSING",
+        title: "Documentation & NACH Processing",
+        tagline: "High-volume document digitisation, NACH mandate setup, contract audits, and record management.",
+        overview: "Streamline paper-intensive administrative workflows with Diallo's documentation team. We handle document scrutiny, e-mandate registration, NACH form processing, and index digitisation with near-zero error rates.",
+        features: [
+          { title: "NACH & ECS Mandate Setup", desc: "End-to-end processing of bank mandates for automated recurring debit setup." },
+          { title: "Document Scrutiny & OCR", desc: "Automated and manual verification of customer application forms and ID proof compliance." },
+          { title: "Digital Indexing & Archiving", desc: "Converting physical archives into searchable, encrypted digital repositories." },
+          { title: "Disbursement File Preparation", desc: "Auditing application files against checklist rules prior to final approval." }
+        ],
+        usecases: [
+          { title: "Bank Loan File Scrutiny", desc: "Processing thousands of loan agreements, income proofs, and bank statements daily." },
+          { title: "Insurance Policy Issuance", desc: "Verifying proposal forms, medical reports, and premium mandates." },
+          { title: "Subscription NACH Processing", desc: "Managing recurring billing authorizations for retail, utility, and financial services." }
+        ]
+      },
+      "sales": {
+        category: "REVENUE GROWTH",
+        title: "Sales & Lead Generation",
+        tagline: "Data-driven tele-sales, qualified lead acquisition, and customer conversion campaigns.",
+        overview: "Accelerate revenue growth with Diallo's trained sales acquisition teams. We combine data profiling, warm lead follow-up, and structured pitch execution to convert prospects into long-term customers.",
+        features: [
+          { title: "Inbound & Outbound Sales", desc: "Trained tele-executives performing product demos, cross-selling, and cold outreach." },
+          { title: "Lead Qualification (SQL/MQL)", desc: "Filtering prospect databases to deliver high-converting sales-ready leads to your core team." },
+          { title: "Campaign Analytics", desc: "Real-time conversion rate metrics, drop-off analysis, and pitch A/B testing." },
+          { title: "CRM Integration", desc: "Direct sync with HubSpot, Salesforce, and custom CRMs for seamless lead tracking." }
+        ],
+        usecases: [
+          { title: "Financial Product Upselling", desc: "Selling credit cards, top-up loans, insurance add-ons, and investment products." },
+          { title: "SaaS & B2B Demo Scheduling", desc: "Qualifying enterprise prospects and setting up meetings for your senior account executives." },
+          { title: "E-Commerce Cart Abandonment", desc: "Outbound call follow-ups with abandoners offering assistance and custom discount incentives." }
+        ]
+      },
+      "technology": {
+        category: "DIGITAL TRANSFORMATION",
+        title: "Technology & Analytics",
+        tagline: "Custom workflow automation, speech analytics, dashboard intelligence, and process technology.",
+        overview: "Empower operational teams with technology that measures, automates, and optimizes performance. From custom workflow engines to real-time analytics dashboards, Diallo connects tech directly into delivery.",
+        features: [
+          { title: "Real-time SLA Dashboards", desc: "Live visualization of call volumes, queue wait times, agent productivity, and resolution rates." },
+          { title: "Workflow Automation", desc: "Automating repetitive data entry, email dispatches, and multi-system status updates." },
+          { title: "Speech & Sentiment Analytics", desc: "AI-assisted voice analytics identifying customer sentiment, compliance breaches, and keywords." },
+          { title: "API Integration", desc: "Connecting BPO workflows smoothly into your proprietary core software and databases." }
+        ],
+        usecases: [
+          { title: "Operational Intelligence Reporting", desc: "Replacing manual Excel reporting with live automated executive performance portals." },
+          { title: "Automated Ticket Dispatching", desc: "Smart routing algorithms sending queries to specialist agents based on urgency and skill." },
+          { title: "Omnichannel Bot Integration", desc: "AI chatbots handling Level-0 queries before seamlessly transferring to human agents." }
+        ]
+      },
+      "ecommerce": {
+        category: "INDUSTRY SOLUTION",
+        title: "E-Commerce Operations",
+        tagline: "Delivering seamless shopping experiences, order management, returns handling, and 24/7 buyer support.",
+        overview: "In today's fast-paced digital marketplace, customer experience defines success. Diallo provides end-to-end order tracking support, return & refund validation, multilingual chat/email assistance, and peak-season traffic scaling to ensure high repeat purchase rates.",
+        features: [
+          { title: "Order Tracking & Status Support", desc: "Instant customer updates on dispatch, courier tracking, and delivery timelines." },
+          { title: "Returns & Refund Validation", desc: "Scrutinizing return requests, reverse pickup coordination, and refund processing." },
+          { title: "24/7 Live Chat & Email", desc: "Round-the-clock buyer assistance for size guides, product inquiries, and cart issues." },
+          { title: "Festive Season Scaling", desc: "Rapidly deploying 3x agent capacity during major sale events and holiday surges." }
+        ],
+        usecases: [
+          { title: "Online Retail Brands", desc: "Handling thousands of buyer tickets daily with under 1-minute chat response times." },
+          { title: "Direct-to-Consumer (D2C) Brands", desc: "Personalized buyer onboarding, post-purchase check-ins, and VIP customer support." },
+          { title: "Marketplace Sellers", desc: "Managing buyer-seller messaging, dispute resolution, and review management." }
+        ]
+      },
+      "edtech": {
+        category: "INDUSTRY SOLUTION",
+        title: "EdTech & Learner Engagement",
+        tagline: "Learner onboarding, course query helpdesk, fee collection, and student retention support.",
+        overview: "Support students and professionals along their learning journey. Diallo powers enrollment assistance, technical platform helpdesk, fee installment reminders, and proactive learner check-ins.",
+        features: [
+          { title: "Learner Onboarding", desc: "Guiding new students through LMS setup, schedule orientation, and course material access." },
+          { title: "Technical Platform Helpdesk", desc: "Resolving login issues, video playback errors, and assignment submission queries." },
+          { title: "Fee Installment Recovery", desc: "Gentle reminder tele-calls and payment link dispatches for course EMI payments." },
+          { title: "Student Retention Outbound", desc: "Identifying inactive learners and offering support to boost course completion rates." }
+        ],
+        usecases: [
+          { title: "Online Learning Platforms", desc: "Providing 24/7 technical helpdesk for live classes and exam portals." },
+          { title: "K-12 & Test Prep Companies", desc: "Managing parent queries, counselor callback scheduling, and batch assignments." },
+          { title: "Higher Education & Certifications", desc: "Assisting applicants with document verification, fee processing, and exam hall tickets." }
+        ]
+      },
+      "healthcare": {
+        category: "INDUSTRY SOLUTION",
+        title: "Healthcare Operations",
+        tagline: "Patient coordination, appointment scheduling, billing helpdesk, and insurance claim follow-ups.",
+        overview: "Ensure empathetic, compliant patient communication with Diallo's healthcare support unit. We handle doctor appointment booking, diagnostic report delivery, medical billing queries, and claim status follow-ups.",
+        features: [
+          { title: "Appointment Scheduling", desc: "Managing doctor calendars, lab test slot booking, and pre-consultation instructions." },
+          { title: "Insurance Claim Follow-up", desc: "Coordinate with insurance providers to track cashless approval and reimbursement files." },
+          { title: "Patient Care Follow-up", desc: "Post-discharge check-ins, medicine adherence reminders, and feedback collection." },
+          { title: "HIPAA Compliant Security", desc: "Strict data privacy compliance protecting sensitive patient health information." }
+        ],
+        usecases: [
+          { title: "Hospital Chains & Clinics", desc: "Centralizing patient inquiry calls, appointment booking, and diagnostic report dispatches." },
+          { title: "Telemedicine & Health Tech Apps", desc: "24/7 patient support for video consultation booking, prescription downloads, and payments." },
+          { title: "Diagnostic & Pathology Labs", desc: "Sample pickup scheduling, report delivery alerts, and test preparation assistance." }
+        ]
+      },
+      "hr-management": {
+        category: "ENTERPRISE CAPABILITY",
+        title: "HR Management Systems",
+        tagline: "Comprehensive workforce management, employee onboarding, attendance tracking, and HR helpdesk.",
+        overview: "Modernize your workforce infrastructure with Diallo's HR Management solutions. We deliver seamless employee data management, Leave & Attendance automation, onboarding documentation, and 24/7 HR query resolution.",
+        features: [
+          { title: "Digital Onboarding & Documentation", desc: "Paperless employee document collection, background verification, and ID creation." },
+          { title: "Leave & Attendance Tracking", desc: "Biometric and mobile GPS attendance integration with automated leave approvals." },
+          { title: "HR Helpdesk Support", desc: "Resolving employee queries regarding policies, tax documents, and benefits." },
+          { title: "Performance Management", desc: "Automated appraisal workflow tracking, goal alignment, and feedback portals." }
+        ],
+        usecases: [
+          { title: "Distributed Field Workforce", desc: "Managing thousands of off-site agents with mobile attendance and instant HR support." },
+          { title: "Rapid Scale-up Hiring", desc: "Processing offer letters, compliance documents, and asset dispatches during expansion." },
+          { title: "Employee Self-Service", desc: "Providing staff with instant portal access to payslips, Form 16, and leave balances." }
+        ]
+      },
+      "payroll": {
+        category: "ENTERPRISE CAPABILITY",
+        title: "Third-party Payroll Services",
+        tagline: "End-to-end compliant payroll processing, statutory deductions, tax filing, and salary disbursement.",
+        overview: "Ensure 100% timely salary processing and statutory compliance without internal administrative burden. Diallo manages gross-to-net salary calculations, PF/ESIC deductions, Professional Tax, and direct bank payouts.",
+        features: [
+          { title: "Compliant Salary Disbursement", desc: "Timely direct bank transfer processing with detailed itemized digital payslips." },
+          { title: "Statutory Filing (PF, ESIC, PT)", desc: "Automated calculation and submission of Provident Fund, ESIC, LWF, and PT returns." },
+          { title: "TDS & Form 16 Generation", desc: "Tax deduction calculations, investment declaration audits, and Form 16 generation." },
+          { title: "Reconciliation & Audit Reports", desc: "Detailed monthly payroll expense reports formatted for your finance team." }
+        ],
+        usecases: [
+          { title: "Contractual & Off-Role Staffing", desc: "Managing payroll for thousands of temporary, seasonal, or third-party contract workers." },
+          { title: "Multi-State Compliance Management", desc: "Navigating complex state-specific Labor Laws, PT rates, and welfare fund regulations." },
+          { title: "Outsourced HR & Accounting", desc: "Offloading monthly payroll calculation overhead to guarantee error-free execution." }
+        ]
+      },
+      "backend": {
+        category: "ENTERPRISE CAPABILITY",
+        title: "Backend Processes & Back-Office",
+        tagline: "High-volume data processing, transaction auditing, record reconciliation, and admin support.",
+        overview: "Power your business back-office with Diallo's dedicated processing center. We handle complex data entry, invoice processing, catalog updates, database cleanup, and transaction audits with exceptional speed and accuracy.",
+        features: [
+          { title: "Data Entry & Digitisation", desc: "Fast, accurate extraction and indexing of information from physical forms or scans." },
+          { title: "Transaction Audit & Scrutiny", desc: "Verifying bill payments, claim forms, and financial ledgers against business rules." },
+          { title: "Catalog & Content Management", desc: "Updating product listings, SKU details, pricing, and images for digital portals." },
+          { title: "Reconciliation & Cleansing", desc: "Cross-matching daily transaction logs, bank feeds, and database master records." }
+        ],
+        usecases: [
+          { title: "Banking & NBFC Back-Office", desc: "Auditing loan application files, KYC documents, and bank statement entries." },
+          { title: "Retail & Supply Chain Operations", desc: "Processing vendor invoices, purchase orders, and inventory receipt matching." },
+          { title: "Insurance Claim Processing", desc: "Indexing medical bills, verifying coverage policy rules, and preparing payout files." }
+        ]
+      },
+      "product-agnostic": {
+        category: "ENTERPRISE CAPABILITY",
+        title: "Product-agnostic Operations",
+        tagline: "Flexible operational teams trained to execute custom proprietary software workflows and systems.",
+        overview: "Every enterprise uses distinct software tools. Diallo builds agile, product-agnostic operational squads trained directly on your internal ERP, CRM, or proprietary platform without requiring costly custom integrations.",
+        features: [
+          { title: "Fast Software Adoption", desc: "Quick-ramp training methodologies to master any proprietary internal software." },
+          { title: "Agile Operations Scaling", desc: "Scaling workforce capacity up or down based on your business volume demands." },
+          { title: "SOP & Process Authoring", desc: "Documenting unwritten internal operational steps into standardized training manuals." },
+          { title: "Cross-functional Delivery", desc: "Combining support, data processing, and outreach into a unified dedicated team." }
+        ],
+        usecases: [
+          { title: "Custom Enterprise Software", desc: "Operating proprietary internal administrative platforms that lack public APIs." },
+          { title: "Proprietary Fintech Portals", desc: "Managing credit evaluation dashboards, loan approval queues, and limit updates." },
+          { title: "Logistics & Fleet Tracking", desc: "Monitoring driver dispatches, vehicle status alerts, and delivery route exceptions." }
+        ]
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const serviceKey = urlParams.get("service") || "customer-service";
+      const data = servicesData[serviceKey] || servicesData["customer-service"];
+
+      document.getElementById("breadcrumb-title").textContent = data.title;
+      document.getElementById("service-category").textContent = data.category;
+      document.getElementById("service-title").textContent = data.title;
+      document.getElementById("service-tagline").textContent = data.tagline;
+      document.getElementById("service-overview").textContent = data.overview;
+      document.title = `${data.title} | Diallo Operations`;
+
+      const featureListEl = document.getElementById("feature-list");
+      featureListEl.innerHTML = data.features.map(f => `
+        <div class="feature-item">
+          <strong>${f.title}</strong>
+          <p>${f.desc}</p>
+        </div>
+      `).join("");
+
+      const usecaseGridEl = document.getElementById("usecase-grid");
+      usecaseGridEl.innerHTML = data.usecases.map(u => `
+        <div class="usecase-box">
+          <strong>${u.title}</strong>
+          <p>${u.desc}</p>
+        </div>
+      `).join("");
+
+      document.querySelectorAll(`.service-link-btn[data-s="${serviceKey}"]`).forEach(btn => {
+        btn.classList.add("active");
+      });
+    });
+  </script>
+</body>
+
+</html>

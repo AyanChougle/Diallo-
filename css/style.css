@@ -85,6 +85,80 @@ img{max-width:100%;display:block}
 .nav-links a:hover,.nav-links a.active{color:#fff}
 .nav-links a.active{position:relative}
 .nav-links a.active:after{content:"";position:absolute;left:0;right:0;bottom:-9px;height:2px;background:var(--orange);border-radius:99px}
+
+.nav-item-dropdown{position:relative;display:inline-block}
+.nav-item-dropdown .dropdown-link{display:inline-flex;align-items:center;gap:5px;cursor:pointer}
+.nav-item-dropdown .caret{font-size:10px;transition:transform .25s ease}
+.nav-item-dropdown:hover .caret{transform:rotate(180deg)}
+.dropdown-menu{
+  position:absolute;
+  top:calc(100% + 14px);
+  left:-80px;
+  width:540px;
+  background:rgba(6,27,43,.96);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:20px;
+  padding:22px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s ease,transform .25s ease,visibility .25s;
+  pointer-events:none;
+  z-index:2000;
+}
+.dropdown-menu:before{
+  content:"";
+  position:absolute;
+  top:-14px;
+  left:0;
+  right:0;
+  height:14px;
+}
+.nav-item-dropdown:hover .dropdown-menu{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+.dropdown-column{display:flex;flex-direction:column;gap:6px}
+.dropdown-title{
+  font-size:10px;
+  letter-spacing:.14em;
+  color:var(--orange);
+  font-weight:800;
+  margin-bottom:8px;
+  text-transform:uppercase;
+}
+.dropdown-item{
+  display:block;
+  padding:10px 12px;
+  border-radius:12px;
+  transition:background .2s ease,transform .2s ease;
+}
+.dropdown-item:hover{
+  background:rgba(255,255,255,.08);
+  transform:translateX(3px);
+}
+.dropdown-item strong{
+  display:block;
+  font-size:13px;
+  color:#fff;
+  font-weight:600;
+}
+.dropdown-item small{
+  display:block;
+  font-size:11px;
+  color:#94a3b8;
+  margin-top:2px;
+  font-weight:400;
+}
+
 .nav-cta{height:44px;padding:0 18px;display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;border-radius:11px;font-size:13px;font-weight:700;white-space:nowrap}
 .nav-cta span{font-size:16px}
 .menu-button{display:none;margin-left:auto;border:0;background:transparent;padding:8px}
