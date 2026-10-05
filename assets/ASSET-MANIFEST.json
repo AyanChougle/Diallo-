@@ -1,0 +1,19 @@
+{
+  "site": "DIALLO one-page",
+  "asset_policy": "local-approved-assets",
+  "logo_paths": [
+    "assets/company-logos/",
+    "assets/logos/",
+    "assets/client-logos/"
+  ],
+  "international_client_references": [
+    "DirectTV",
+    "Medicare",
+    "Cashnow",
+    "Payby"
+  ],
+  "notes": [
+    "Exact client/logo artwork should be copied from the approved Diallo asset pack before production.",
+    "No guessed remote logo URLs are used."
+  ]
+}
